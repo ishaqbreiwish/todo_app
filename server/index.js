@@ -1,24 +1,23 @@
-const express = require('express') // import express
-const app = express() // creates an instance of express
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose') //imports mongoose
-const { PORT, mongoUri } = require('./config') // imports PORT and mongoUri from config file
-const cors = require('cors') //imports CORS for making reqests across different servers
-require('dotenv').config(); // imports dotenv
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const TodoListRoutes = require('./routes/api/Todolist.js') // Corrected casing in file name
+const path = require('path')
+require('dotenv').config();
 
-// sets up a root handler for the path "/" which is the roort url of the app
-// req = request -> represents the incoming HTTP request
-// res = response -> sends a response back to the client
-app.get('/', (req, res) => { 
-    res.send('Hello World') // sends a response to the client with the content "Hello World"
-})
-
-app.use(cors()) // to allow cross origin requests
-app.use(bodyParser.json()) // to convert the request into JSON
+app.use(cors())
+app.use(bodyParser.json())
 
 mongoose
-    .connect(process.env.MONGO_URI) //connects our application to a mongoDB database
-    .then(() => console.log('MongoDB database Connected...')) // then() is executed when the server is connected
-    .catch((err) => console.log(err)) // handles error if connection fails
+    .connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => console.log('MongoDB database Connected...'))
+    .catch((err) => console.log(err))
 
-app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`)) // starts the express erver
+app.use('/api/todoList', TodoListRoutes)
+
+app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`))

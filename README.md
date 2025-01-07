@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple Todo List application built with Vue.js on the frontend and a Node.js/Express backend. The application allows users to create, read, update, and delete todos. It provides a user-friendly interface to manage tasks effectively.
+This is a simple Todo List application built with Vue.js on the frontend and a Node.js/Express backend. The application allows users to create, read, update, and delete todo list items. It provides a user-friendly interface to manage tasks effectively.
 
 ## Features
 

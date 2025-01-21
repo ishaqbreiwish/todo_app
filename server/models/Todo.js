@@ -9,6 +9,10 @@ const TodoSchema = new Schema({ // defines schema
         type: String,
         required: false,
     },
+    image: {
+        type: String, // URL of the uploaded image
+        required: false,
+    },
 })
 
 const Todo = model('todo', TodoSchema)

@@ -5,7 +5,7 @@ export default {
   name: "App",
   data() {
     return {
-      todos: [], // Stores the list of todos
+      todos: [], // Stores 
       title: "", // Title for a new todo
       description: "", // Description for a new todo
       selectedFile: null, // File selected for upload

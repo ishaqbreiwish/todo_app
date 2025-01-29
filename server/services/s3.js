@@ -2,7 +2,7 @@
 const AWS = require('aws-sdk')
 
 // Load environment variables from a .env file (like secret keys) into the code
-
+require('dotenv').config()
 
 // Create a new S3 client (a connection to the cloud storage service S3)
 const s3 = new AWS.S3({
